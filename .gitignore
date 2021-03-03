@@ -1,0 +1,7 @@
+*.csv
+.cache
+.config
+.ipynb_checkpoints
+.ipython
+.local
+.bash_history
