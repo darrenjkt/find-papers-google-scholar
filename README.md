@@ -1,32 +1,17 @@
-## Sort Google Scholar by the Number of Citations V2.0b
-This Python code ranks publications data from Google Scholar by the number 
-of citations. It is useful for finding relevant papers in a specific field. 
+# Find seminal papers on google scholar
 
-The data acquired from Google Scholar is Title, Citations, Links and Rank. A new
-columns with the number of citations per year is also included.
-The example of the code will look for the top 100 papers related to the keyword, 
-and rank them by the number of citations. This keyword can eiter be included in 
-the command line terminal (`$python sortgs.py --kw 'my keyword'`) or edited in 
-the original file.
-As output, a .csv file will be returned with the name of the chosen keyword
-ranked by the number of citations.
+It's quite frustrating to search a key word on Google Scholar and not know which papers are the seminal papers in the particular field. Also, Google scholar search is limited to the specific key words you put in. In my manual literature review process, I find myself clicking through the "cited by" articles, and finding out who has cited these. This code aims to automate the search for good papers and finding top 1-5 papers per year of a specific topic. 
 
-### UPDATES
-- GOOGLE COLAB: Try [running the code using Google Colab](https://colab.research.google.com/github/WittmannF/sort-google-scholar/blob/master/Test_sortgs_py_on_Colab.ipynb)! No install requirements! Limitations: Can't handle robot checking, so use it carefully.
-- Command line arguments. Ex: `$python sortgs.py --kw "deep learning"` (results saved in `deep_learning.csv`)
-- Handling robot checking with selenium.
-    - OBS: You might be asked to manually solve the first captcha for retrieving the content of the pages
+The goal is to not just aggregate results of the given search keyword but to also extend it to potentially related keyword searches to find seminal papers. For example, "object tracking" does not give me results for a seminal paper that is titled "Simple Online Realtime tracking". However if I simply search "tracking", the first result on google scholar returns "tracking hurricanes". 
 
+This code has been adapted from the [repository](https://github.com/WittmannF/sort-google-scholar) by WITTMANN, Fernando Marcos.  
 
-### Citation
-This code was originally developed for my [MS Dissertation](http://repositorio.unicamp.br/jspui/handle/REPOSIP/330610). For referencing this tool, you can use the following:
+**Limitations:**
+- This code can't handle robot captchas so try not to overuse the search function.
+- Selenium is used to handle robot checking; you might be asked to manually solve the first captcha when retrieving the content of the pages
 
-```
-WITTMANN, Fernando Marcos. Optimization applied to residential non-intrusive load monitoring. 2017. 
-Dissertation (Masters) - University of Campinas, School of Electrical and Computer Engineering, Campinas, SP. 
-Available in: <http://www.repositorio.unicamp.br/handle/REPOSIP/330610>.
-```
-
+**TODO**
+- Right now the program only does search by keyword; extend the application to search by cited articles to get more relevant papers that don't have those specific search keywords. 
 
 
 ### Usage of `sortgs.py`
@@ -117,15 +102,3 @@ If you install anaconda, all of those requirements (except selenium) are going t
 Highly suggested, if having problems with robot checking:
 - ChromeDriver: http://chromedriver.chromium.org/
     - After downloading chromedriver, rename it to `chromedriver` and add it in a folder accessible by the PATH (Example: your python directory. Mine is at `/Users/.../anaconda/bin/`)
-
-
-### LICENSE
-- MIT
-
-### Misc
-If this project was helpful to you in any way, feel free to buy me a cup of coffee :)
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QAQ4YJFQVXLMA&source=url)
-
-For a feedback, send me an email: fernando [dot] wittmann [at] gmail [dot] com
-
